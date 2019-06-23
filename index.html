@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Wireless Spectrum Analyzer</title>
+	<meta name="description" content="Building wireless spectrum analyzer" />
+	<meta http-equiv="author" content="Subham Saha"/>
+	<meta http-equiv="pragma" content="no-cache"/>
+	<link rel="stylesheet" type="text/css" href="css/index.css"/>
+</head>
+
+<body> 
+<h1>
+	Wireless Spectrum Analyzer
+</h1>
+<h2>
+	Introduction
+</h2>
+<p>
+	Due to recent advancement of technology, the cost of making a wireless device has come down drastically. As unlicensed wireless spectrum is avalable to use, a whole lot of devices are designed to be controlled wirelessly. Also the concept of Internet of Things has given rise to connecting everyday-use devices with the internet. But as these unlicensed spectra are limited, so is its capability to support number of devices. In lab enviroment, it is often <b>required</b> to have no interference while testing particular type of communication architecture. For example it may happen while testing an WiFi router your simple bluetooth watch causes interference in the signal. So if this information about the wireless environment is not known beforehand it may often lead to false conclusion about the design or system. Hence a quick method and accurate method to learn about the wireless environment is required.
+</p>
+<p>
+	A spectrum analyzer design can be divided in two parts. </p>
+	<ol>
+		<li> <a href="#hardware">Choice of hardware</a></li>
+		<li><a href ="#software">Choice of software</a></li>
+	</ol>
+	<h3 id ="hardware">
+	Choice of hardware
+</h3>
+<p>
+	Choice of hardware mostly depends on the required accuracy of the analyzer. By using software defined radios we can achieve wideband spectrum capture in very low cost hardware. The clock peformance may not be very accurate, but if real requirement of time-sync data is excluded, cheap hardware is often good to go. <abbr title="Universal Software Radio Peripheral">USRPs</abbr> are a great way to start experimenting with the wireless spectrum. They are cheap, and interfacing with the device is very easy. Also, they have industry grade performance where it comes to the actual hardware. A nice demonstration can be found <a href="https://www.youtube.com/embed/cygDXeZaiOM"> here </a>. For more details please check <a href="https://www.ettus.com/products/" target="_blank"> USRP Product Page </a> (opens in new window)
+</p>
+
+<h3>
+	Choice of software
+</h3>
+<p>
+	Choice of the operating system to start doing programming is vital. As it turns out that Linux has a very well documented help on how to install and update the libraries, implementing the programs are lot more easier in Linux than in widnows and mac os. Also, setting thread priorities to boost performance of the device is easier in Linux than in other opearting systems. There is lot of support already existing for Ubuntu flavour. Ettus research provides detailed steps of how to install and configure the device here: <a href="https://files.ettus.com/manual/page_build_guide.html"> Building and installing UHD from source </a>
+</p>
+<p>
+	Then comes the choice of programming language. Matlab have support to interface with USRPs. But what I found while working in Matlab is setting up the device takes a lot of time compared to actually capturing some signal. Also, the source codes are not openly distributed and are saved in 'p-code'. So, if you want to make deployable out of your software, probably open-source libraries will be best option to choose. GNU Radio gives great support for amateur users. The flowgraphs are very easy to use and also reliable. But the downside is that always user don't get to control the number of samples you want. Although using head block it can be done but while experimenting it was found that the files being saved were decreasing in size eventhough number of samples were not changed. So, a nice way to approach the device is to work with USRP's own driver provider. <dfn> USRP Hardware Driver</dfn>(UHD) library provides easy to use API to interface with the device. It gives control over the input stream and  
+</p>
+
+<table id = "comparison-table">
+	<tr>
+		<th></th>
+		<th scope="col"> Difficulty </th>
+		<th scope="col"> Performance </th>
+	</tr>
+	<tr>
+		<th scope="row"> Matlab</th>
+		<td> Easy</td>
+		<td>Poor</td>
+	</tr>
+	<tr>
+		<th scope="row">GNU Radio</th>
+		<td>Easy</td>
+		<td>Good</td>
+	</tr>
+	<tr>
+		<th scope="row"> UHD </th>
+		<td>Moderate</td>
+		<td>Good</td>
+	</tr>
+</table>
+
+<address>
+	Subham Saha<br/>
+	Here is my contact info:
+	<a href="mailto:subhamsaha0216@gmail.com">
+		subhamsaha0216@gmail.com
+	</a>
+
+</address>
+
+</body>
+
+</html>
